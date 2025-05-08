@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:maps="clr-namespace:Microsoft.Maui.Controls.Maps;assembly=Microsoft.Maui.Controls.Maps"
+             x:Class="szakdolgozat.Pages.MainPage"
+             Title="">
+
+    <Grid RowDefinitions="Auto,Auto,*,Auto">
+
+        <!-- Felhasználónév -->
+        <Label x:Name="UsernameLabel"
+               FontSize="Medium"
+               FontAttributes="Bold"
+               HorizontalOptions="Center"
+               VerticalOptions="Center"
+               Margin="5"
+               Grid.Row="0" />
+
+        <!-- Koordináta és útvonal adatok -->
+        <VerticalStackLayout Grid.Row="1"
+                             HorizontalOptions="Center"
+                             Spacing="2"
+                             Padding="0">
+            <Label x:Name="MgrsLabel"
+                   FontSize="Small"
+                   HorizontalOptions="Center"
+                   VerticalOptions="Center"
+                   Margin="5" 
+                   Text="Koordináta: - | MGRS: -" />
+
+            <Label x:Name="RouteSummaryLabel"
+                   FontSize="Small"
+                   TextColor="Blue"
+                   HorizontalOptions="Center"
+                   IsVisible="False"
+                   Margin="0,0,0,5" />
+        </VerticalStackLayout>
+
+        <!-- Térkép -->
+        <maps:Map x:Name="Map"
+                  MapType="Street"
+                  VerticalOptions="FillAndExpand"
+                  HorizontalOptions="FillAndExpand"
+                  IsShowingUser="True"
+                  MapClicked="OnMapClicked"
+                  Grid.Row="2" />
+
+        <!-- Alsó gombok -->
+        <StackLayout Grid.Row="3"
+                     Orientation="Vertical"
+                     Padding="10"
+                     Spacing="10">
+
+            <Grid ColumnDefinitions="*,*,*"
+      HorizontalOptions="FillAndExpand"
+      ColumnSpacing="10">
+
+                <Button Text="Helyzetem középre"
+            Clicked="OnCenterMapButtonClicked"
+            BackgroundColor="#007BFF"
+            TextColor="White"
+            Grid.Column="0"
+            Margin="2" />
+
+                <Button Text="Térképtípus választása"
+            Clicked="OnChangeMapTypeClicked"
+            BackgroundColor="#6C757D"
+            TextColor="White"
+            Grid.Column="1"
+            Margin="2" />
+
+                <Button Text="Útvonaltervezés indítása"
+            Clicked="OnStartRoutePlanningClicked"
+            BackgroundColor="#17A2B8"
+            TextColor="White"
+            Grid.Column="2"
+            Margin="2" />
+            </Grid>
+
+
+            <StackLayout Orientation="Horizontal" Spacing="10" Padding="0,0,0,10">
+                <Switch x:Name="ElevationSwitch"
+                        Toggled="OnElevationSwitchToggled" />
+                <Label Text="Magassági adatok megjelenítése"
+                       VerticalOptions="Center"
+                       FontSize="Small" />
+
+                <Button Text="Térkép törlése"
+                        Clicked="OnClearMapClicked"
+                        BackgroundColor="#dc3545"
+                        TextColor="White"
+                        VerticalOptions="Center"
+                        HeightRequest="30"
+                        FontSize="Small"/>
+            </StackLayout>
+
+            <Grid ColumnDefinitions="*,*,*"
+                  HorizontalOptions="FillAndExpand">
+
+                <Button Text="MEDEVAC"
+                        Clicked="OnMedevacButtonClicked"
+                        BackgroundColor="#FF5733"
+                        TextColor="White"
+                        Grid.Column="0"
+                        Margin="2" />
+
+                <Button Text="METHANE"
+                        Clicked="OnMethaneButtonClicked"
+                        BackgroundColor="#FFC300"
+                        TextColor="Black"
+                        Grid.Column="1"
+                        Margin="2" />
+
+                <Button Text="SALUTE"
+                        Clicked="OnSaluteButtonClicked"
+                        BackgroundColor="#DAF7A6"
+                        TextColor="Black"
+                        Grid.Column="2"
+                        Margin="2" />
+            </Grid>
+        </StackLayout>
+    </Grid>
+</ContentPage>

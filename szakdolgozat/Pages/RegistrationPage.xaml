@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="szakdolgozat.Pages.RegistrationPage"
+             Title="">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="15" VerticalOptions="Center">
+
+            <Label Text="Új fiók létrehozása"
+                   FontSize="24"
+                   HorizontalOptions="Center"
+                   FontAttributes="Bold"
+                   Margin="0,10,0,20" />
+
+            <Entry x:Name="NameEntry"
+                   Placeholder="Hívónév"
+                   Keyboard="Default" />
+
+            <Entry x:Name="EmailEntry"
+                   Placeholder="Email cím"
+                   Keyboard="Email" />
+
+            <!-- Jelszó mező + szem ikon -->
+            <Grid ColumnSpacing="5">
+                <Entry x:Name="PasswordEntry"
+                       Placeholder="Jelszó"
+                       IsPassword="True"
+                       TextChanged="OnPasswordChanged"
+                       HorizontalOptions="FillAndExpand" />
+                <ImageButton x:Name="TogglePasswordButton"
+                             Source="eye.png"
+                             BackgroundColor="Transparent"
+                             WidthRequest="30"
+                             HeightRequest="30"
+                             Clicked="OnTogglePasswordClicked"
+                             HorizontalOptions="End"
+                             VerticalOptions="Center" />
+            </Grid>
+
+            <!-- Jelszó erősség -->
+            <Label x:Name="PasswordStrengthLabel"
+                   FontSize="Small"
+                   TextColor="Gray"
+                   HorizontalOptions="Start" />
+
+            <!-- Jelszó megerősítés + szem ikon -->
+            <Grid ColumnSpacing="5">
+                <Entry x:Name="ConfirmPasswordEntry"
+                       Placeholder="Jelszó megerősítése"
+                       IsPassword="True"
+                       HorizontalOptions="FillAndExpand" />
+                <ImageButton x:Name="ToggleConfirmPasswordButton"
+                             Source="eye.png"
+                             BackgroundColor="Transparent"
+                             WidthRequest="30"
+                             HeightRequest="30"
+                             Clicked="OnToggleConfirmPasswordClicked"
+                             HorizontalOptions="End"
+                             VerticalOptions="Center" />
+            </Grid>
+
+            <Button Text="Regisztráció"
+                    Clicked="OnRegisterButtonClicked"
+                    BackgroundColor="#007BFF"
+                    TextColor="White"
+                    CornerRadius="8" />
+
+            <Label Text="Már van fiókod? Térj vissza a bejelentkezéshez!"
+                   FontSize="Small"
+                   HorizontalOptions="Center"
+                   Margin="0,20,0,0" />
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

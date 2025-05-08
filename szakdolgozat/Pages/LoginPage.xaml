@@ -1,0 +1,96 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="szakdolgozat.Pages.LoginPage"
+             BackgroundImageSource="huncam.jpg">
+
+    <ContentPage.Resources>
+        <!-- Globális stílusok -->
+        <Style TargetType="Button">
+            <Setter Property="CornerRadius" Value="10" />
+            <Setter Property="FontSize" Value="16" />
+            <Setter Property="Padding" Value="10" />
+        </Style>
+        <Style TargetType="Label">
+            <Setter Property="FontSize" Value="14" />
+        </Style>
+    </ContentPage.Resources>
+
+    <ScrollView>
+        <Grid Padding="20" RowSpacing="15" ColumnSpacing="0" BackgroundColor="Transparent">
+            <!-- Sorok definiálása -->
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <!-- Alkalmazás képe -->
+            <Image Source="pic.png"
+                   HeightRequest="150"
+                   WidthRequest="150"
+                   HorizontalOptions="Center"
+                   Grid.Row="0" />
+
+            <!-- Alkalmazás címe -->
+            <Label Text="Védelmi Információ Közlő Alkalmazás"
+                   FontSize="24"
+                   FontAttributes="Bold"
+                   HorizontalOptions="Center"
+                   Grid.Row="1" />
+
+            <!-- Felhasználónév -->
+            <Entry Placeholder="Felhasználónév"
+                   x:Name="UsernameEntry"
+                   TextChanged="OnUsernameChanged"
+                   Grid.Row="2" />
+
+            <!-- Jelszó + szem ikon -->
+            <Grid Grid.Row="3" ColumnSpacing="5">
+                <Entry x:Name="PasswordEntry"
+                       Placeholder="Jelszó"
+                       IsPassword="True"
+                       TextChanged="OnPasswordChanged"
+                       HorizontalOptions="FillAndExpand" />
+
+                <ImageButton x:Name="TogglePasswordButton"
+                             Source="eye.png"
+                             BackgroundColor="Transparent"
+                             WidthRequest="30"
+                             HeightRequest="30"
+                             Clicked="OnTogglePasswordVisibilityClicked"
+                             HorizontalOptions="End"
+                             VerticalOptions="Center" />
+            </Grid>
+
+            <!-- Hibajelzés -->
+            <Label Text="Kérjük, töltse ki mindkét mezőt."
+                   TextColor="Red"
+                   x:Name="ErrorLabel"
+                   IsVisible="False"
+                   HorizontalOptions="Center"
+                   FontAttributes="Italic"
+                   Grid.Row="4" />
+
+            <!-- Bejelentkezés gomb -->
+            <Button Text="Bejelentkezés"
+                    BackgroundColor="#007BFF"
+                    TextColor="White"
+                    Clicked="OnLoginButtonClicked"
+                    IsEnabled="False"
+                    x:Name="LoginButton"
+                    Grid.Row="5" />
+
+            <!-- Regisztráció gomb -->
+            <Button Text="Regisztráció"
+                    BackgroundColor="#28A745"
+                    TextColor="White"
+                    Clicked="OnRegisterButtonClicked"
+                    Grid.Row="6" />
+        </Grid>
+    </ScrollView>
+</ContentPage>
